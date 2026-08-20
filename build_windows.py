@@ -44,13 +44,13 @@ def run_build():
         'main.py'
     ]
 
-    print("Запуск компиляции Nuitka (трансляция Python -> C/C++ -> нативный бинарник Windows)...")
+    print("Running Nuitka Windows compilation (Python -> C/C++ -> Windows PE Binary)...")
     res = subprocess.run(cmd)
     if res.returncode == 0:
-        print("\nСборка успешно завершена!")
-        print(f"Исполняемый файл: {os.path.join(DIST_DIR, 'MediaStudio.exe')}")
+        print("\nBuild successful!")
+        print(f"Output: {os.path.join(DIST_DIR, 'MediaStudio.exe')}")
     else:
-        print(f"\nОшибка при сборке. Код возврата: {res.returncode}")
+        print(f"\nBuild error. Return code: {res.returncode}")
         sys.exit(res.returncode)
 
 
