@@ -20,30 +20,22 @@ def run_build():
 
     cmd = [
         sys.executable,
-        '-m', 'nuitka',
-        '--standalone',
+        '-m', 'PyInstaller',
+        '--noconfirm',
         '--onefile',
-        '--windows-console-mode=disable',
-        f'--windows-icon-from-ico={ICON_PATH}',
-        '--windows-company-name=MediaStudio',
-        '--windows-product-name=MediaStudio',
-        '--windows-file-version=1.0.0.0',
-        '--windows-product-version=1.0.0.0',
-        '--windows-file-description=MediaStudio',
-        '--include-data-dir=ui=ui',
-        '--include-data-dir=assets=assets',
-        '--enable-plugin=pywebview',
-        '--include-package=yt_dlp',
-        '--include-package=imageio_ffmpeg',
-        '--include-package=requests',
-        '--lto=no',
-        f'--output-dir={DIST_DIR}',
-        '--output-filename=MediaStudio.exe',
-        '--assume-yes-for-downloads',
+        '--windowed',
+        '--name=MediaStudio',
+        f'--icon={ICON_PATH}',
+        '--add-data=ui;ui',
+        '--add-data=assets;assets',
+        '--collect-all=webview',
+        '--collect-all=yt_dlp',
+        '--collect-all=imageio_ffmpeg',
+        '--collect-all=requests',
         'main.py'
     ]
 
-    print("Running Nuitka Windows compilation (Python -> C/C++ -> Windows PE Binary)...")
+    print("Running Windows build...")
     res = subprocess.run(cmd)
     if res.returncode == 0:
         print("\nBuild successful!")
