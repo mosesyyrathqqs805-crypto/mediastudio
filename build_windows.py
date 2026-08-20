@@ -32,7 +32,7 @@ def run_build():
         '--windows-file-description=MediaStudio',
         '--include-data-dir=ui=ui',
         '--include-data-dir=assets=assets',
-        '--include-package=webview',
+        '--enable-plugin=pywebview',
         '--include-package=yt_dlp',
         '--include-package=imageio_ffmpeg',
         '--include-package=requests',
